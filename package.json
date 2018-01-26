@@ -22,7 +22,7 @@
     ]
   },
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build": "jest && webpack --config webpack.prod.js",
     "dev-server": "webpack-dev-server --open --config webpack.dev.js",
     "test": "jest",
     "cover": "jest --coverage"
