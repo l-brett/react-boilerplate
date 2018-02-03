@@ -7,6 +7,7 @@
   "license": "MIT",
   "jest": {
     "mapCoverage": true,
+    "coverageReporters": ["json","lcov","text"],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss)$": "identity-obj-proxy"
@@ -24,8 +25,8 @@
   "scripts": {
     "build": "jest && webpack --config webpack.prod.js",
     "dev-server": "webpack-dev-server --open --config webpack.dev.js",
-    "test": "jest",
-    "cover": "jest --coverage"
+    "test": "jest --coverage",
+    "testci": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -39,6 +40,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
+    "coveralls": "^3.0.0",
     "css-loader": "^0.28.8",
     "dotenv-webpack": "^1.5.4",
     "enzyme": "^3.3.0",
