@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import Adapter from 'enzyme-adapter-react-16';
 
-import MainApp from '../src/components/App';
+import AppRouter from '../src/routers/AppRouter';
 import App from '../src/app';
 
 
@@ -12,7 +12,7 @@ describe('App bootstrap', () => {
   let wrapper;
 
   it('renders the app component', () => {
-    expect(render).toHaveBeenCalledWith(<MainApp />, null);
+    expect(render).toHaveBeenCalledWith(<AppRouter />, null);
   });
 });
 
