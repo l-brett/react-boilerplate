@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import App from './components/App';
+import AppRouter from './routers/AppRouter';
 
 import 'normalize.css/normalize.css';
 import style from './styles/styles.scss';
 
-render(<App />, document.getElementById('app'));
+render(<AppRouter />, document.getElementById('app'));
