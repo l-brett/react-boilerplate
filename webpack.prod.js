@@ -7,6 +7,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: "[name].css",
@@ -26,7 +27,16 @@ module.exports = merge(common, {
       root: path.join(__dirname, '..')
     }),
     new UglifyJSPlugin(),
-    extractSass
+    extractSass,
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'react-boilerplate',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      }
+    ),
   ],
   module: {
     rules: [{
