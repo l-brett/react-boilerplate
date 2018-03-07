@@ -1,29 +1,18 @@
 import React from 'react';
 
 import store from '../stores/AppStore';
+import { connect } from 'react-redux';
 
-export default class App extends React.Component {
-  state = {
-    AppTitle: 'React Boilerplate'
-  }
-
-  componentWillMount() {
-    store.subscribe(this.handleStoreSubscription);
-    this.handleStoreSubscription();
-  }
-
-  handleStoreSubscription = () => {
-    const {config: {title: AppTitle} } = store.getState();
-    if(AppTitle != this.state.AppTitle) {
-      this.setState(() => ({
-        AppTitle
-      }));
-    }
-  }
-
+export class App extends React.Component {
   render = () => (
     <div className="app">
-      <h1>{this.state.AppTitle}</h1>
+      <h1>{this.props.AppTitle}</h1>
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  AppTitle:state.config.title
+});
+
+export default connect(mapStateToProps)(App);
