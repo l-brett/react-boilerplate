@@ -6,7 +6,8 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'dist')
+    contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true
   },
   module: {
     rules: [{
